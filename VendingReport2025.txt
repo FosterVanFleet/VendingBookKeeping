@@ -1,0 +1,74 @@
+Cash Collection 
+Date: 2025-01-05
+Location: LSI
+Gross Profit: 256
+Mileage Start - Mileage End: 124444 - 124486
+Trip Mileage: 42
+
+Cash Collection 
+Date: 2025-01-09
+Location: GRS
+Gross Profit: 66
+Mileage Start - Mileage End: 124589 - 124600
+Trip Mileage: 11
+
+Expense 
+Date: 2025-01-09
+Location: Sams
+Expense Cost: 211.54
+Expense Type: Inventory
+Mileage Start - Mileage End: 0 - 0
+Trip Mileage: 0
+
+Cash Collection 
+Date: 2025-02-02
+Location: LSI
+Gross Profit: 251
+Mileage Start - Mileage End: 125656 - 125698
+Trip Mileage: 42
+
+Cash Collection 
+Date: 2025-02-13
+Location: GRS
+Gross Profit: 71
+Mileage Start - Mileage End: 126175 - 126180
+Trip Mileage: 5
+
+Cash Collection 
+Date: 2025-02-13
+Location: LSI
+Gross Profit: 101
+Mileage Start - Mileage End: 126180 - 126249
+Trip Mileage: 69
+
+Expense 
+Date: 2025-02-26
+Location: LSI
+Expense Cost: 0.0
+Expense Type: Repair
+Mileage Start - Mileage End: 127000 - 127056
+Trip Mileage: 56
+
+Cash Collection 
+Date: 2025-02-13
+Location: COIN DEPOSIT
+Gross Profit: 256.05
+Mileage Start - Mileage End: 127000 - 127001
+Trip Mileage: 1
+
+Expense 
+Date: 2025-02-01
+Location: Sam's
+Expense Cost: 105.98
+Expense Type: Inventory
+Mileage Start - Mileage End: 0 - 0
+Trip Mileage: 0
+
+Expense 
+Date: 2025-02-13
+Location: Sam's
+Expense Cost: 164.96
+Expense Type: Inventory
+Mileage Start - Mileage End: 0 - 0
+Trip Mileage: 0
+
