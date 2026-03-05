@@ -44,10 +44,10 @@ Data Processing Workflow:
      This design ensures the system behaves like a lightweight financial data pipeline.
 
 Features
-  - Expense tracking
-  - Profit calculation
-  - Monthly financial reporting
-  - Yearly financial reporting
+  - Expense tracking (using BigDecimal)
+  - Profit calculation (using BigDecimal)
+  - Monthly financial reporting (using BigDecimal)
+  - Yearly financial reporting (using BigDecimal)
   - Food Loss tracking
   - Structured file parsing
   - Object-oriented data modeling
@@ -69,4 +69,4 @@ Future Improvements
     
 Disclaimers:
   - All .txt files included in this repository are sample data only and do not reflect real business records.
-  - The repository and ReadMe may not not reflect the most current or updated version of this program.
+  - The repository and ReadMe may not reflect the most current or updated version of this program.
