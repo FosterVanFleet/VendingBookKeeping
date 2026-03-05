@@ -1,6 +1,7 @@
 package model;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /** 
  *  Class for collection of profits from machines. 
@@ -11,21 +12,29 @@ public class CashCollection {
 	/** Data members */
 	private String location;
 	private String date;
-	private double profit;
+	private BigDecimal profit;
 	private int mileageStart;
 	private int mileageEnd;
+	private int mileage;
 	private String filePath;
 	
-	/** Constructor */
-	public CashCollection(String location, String date, double profit, int mileageStart, int mileageEnd, String filePath) {
+	/** Constructor's */
+	public CashCollection(String location, String date, BigDecimal profit, int mileageStart, int mileageEnd, String filePath) {
 		this.location = location;
 		this.date = date;
 		this.profit = profit;
 		this.mileageStart = mileageStart;
 		this.mileageEnd = mileageEnd;
+		this.mileage = mileageEnd - mileageStart;
 		this.filePath = filePath;
 	}
-	
+
+	public CashCollection(String location, String date, BigDecimal profit, int mileage) {
+		this.location = location;
+		this.date = date;
+		this.profit = profit;
+		this.mileage = mileage;
+	}
 	/** Getters. */
 	public String getLocation() {
 		return location;
@@ -35,7 +44,7 @@ public class CashCollection {
 		return date;
 	}
 	
-	public double getProfit() {
+	public BigDecimal getProfit() {
 		return profit;
 	}
 	
@@ -49,7 +58,7 @@ public class CashCollection {
 	
 	// finds total mileage.
 	public int getMileageTotal() {
-		return mileageEnd - mileageStart;
+		return mileage;
 	}
 	
 	public String filePath() {

@@ -2,6 +2,7 @@ package model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * Class for Expenses
@@ -13,20 +14,30 @@ public class Expense {
 	private String location;
 	private String date;
 	private String type;
-	private double expenseAmount;
+	private BigDecimal expenseAmount;
 	private int mileageStart;
 	private int mileageEnd;
+	private int mileage;
 	private String filePath;
 
 	/** Constructor */
-	public Expense(String location, String date, String type, double expenseAmount, int mileageStart, int mileageEnd, String filePath) {
+	public Expense(String location, String date, String type, BigDecimal expenseAmount, int mileageStart, int mileageEnd, String filePath) {
 		this.location = location;
 		this.date = date;
 		this.type = type;
 		this.expenseAmount = expenseAmount;
 		this.mileageStart = mileageStart;
 		this.mileageEnd = mileageEnd;
+		this.mileage = mileageEnd - mileageStart;
 		this.filePath = filePath;
+	}
+	
+	public Expense(String location, String date, String type, BigDecimal expenseAmount, int mileage) {
+		this.location = location;
+		this.date = date;
+		this.type = type;
+		this.expenseAmount = expenseAmount;
+		this.mileage = mileage;
 	}
 	
 	/** Getters */
@@ -38,7 +49,7 @@ public class Expense {
 		return date;
 	}
 	
-	public double getExpenseAmount() {
+	public BigDecimal getExpenseAmount() {
 		return expenseAmount;
 	}
 	
@@ -51,7 +62,7 @@ public class Expense {
 	}
 	
 	public int getMileageTotal() {
-		return mileageEnd - mileageStart;
+		return mileage;
 	}
 	
 	public String getFilePath() {

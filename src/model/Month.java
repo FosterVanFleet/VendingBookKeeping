@@ -2,23 +2,24 @@ package model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class Month {
 	private String month;
 	private String year;
-	private double expense;
-	private double grossProfit;
+	private BigDecimal expense;
+	private BigDecimal grossProfit;
 	private int mileage;
-	private double netProfit;
+	private BigDecimal netProfit;
 
 	/** Constructor */
-	public Month(String month, String year, double expense, double grossProfit, int mileage) {
+	public Month(String month, String year, BigDecimal expense, BigDecimal grossProfit, int mileage) {
 		this.month = month;
 		this.year = year;
 		this.expense = expense;
 		this.grossProfit = grossProfit;
 		this.mileage = mileage;
-		netProfit = grossProfit - expense;
+		netProfit = grossProfit.subtract(expense);
 	}
 
 	/** Getters */
@@ -31,11 +32,11 @@ public class Month {
 		return year;
 	}
 
-	public double getExpense() {
+	public BigDecimal getExpense() {
 		return expense;
 	}
 
-	public double getGrossProfit() {
+	public BigDecimal getGrossProfit() {
 		return grossProfit;
 	}
 

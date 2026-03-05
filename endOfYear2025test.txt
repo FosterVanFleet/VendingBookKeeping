@@ -1,0 +1,36 @@
+End of Year 2025
+Gross Profit: 1408.05
+Expense: 1068.62
+Net Profit: 339.0
+Mileage Total: 406
+ 
+End of Year 2025
+Gross Profit: 1408.05
+Expense: 1068.62
+Net Profit: 339.0
+Mileage Total: 406
+ 
+End of Year 2025
+Gross Profit: 1408.05
+Expense: 1068.62
+Net Profit: 339.0
+Mileage Total: 406
+ 
+End of Year 2025
+Gross Profit: 5961.43
+Expense: 4590.0999999999985
+Net Profit: 1371.0
+Mileage Total: 1301
+ 
+End of Year 2025
+Gross Profit: 5961.43
+Expense: 4590.10000000000002
+Net Profit: 1371.32999999999998
+Mileage Total: 1301
+ 
+End of Year 2025
+Gross Profit: 5961.43
+Expense: 4590.10
+Net Profit: 1371.33
+Mileage Total: 1301
+ 

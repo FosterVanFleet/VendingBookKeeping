@@ -1,0 +1,28 @@
+
+Food Waste Entry: 2025-03-28
+Snack:              | Price | Amount | Total Cost | 
+---------------------------------------------------Taki's:              |  0.33  |   7   |    2.31    |
+Ritz Bits:           |  0.45  |   16   |    7.20    |
+FritoLay Flavor Mix: |  0.37  |   46   |    17.02    |
+Kit-Kat:             |  0.94  |   10   |    9.40    |
+Caramel Creams:      |  0.51  |   2   |    1.02    |
+Nerds Clusters:      |  1.42  |   1   |    1.42    |
+SourPatch Kids:      |  0.94  |   44   |    41.36    |
+Doritos:             |  0.38  |   6   |    2.28    |
+Chex Mix Bars:       |  0.4  |   29   |    11.60    |
+Utz Variety Pack:    |  0.34  |   19   |    6.46    |
+Pistachios:          |  0.44  |   8   |    3.52    |
+
+Food Waste Entry: 2025-12-31
+Snack:              | Price | Amount | Total Cost | 
+---------------------------------------------------Diet Coke:           |  0.56  |   35   |    19.60    |
+Pepsi Zero:          |  0.51  |   39   |    19.89    |
+Mountain Dew:        |  0.51  |   3   |    1.53    |
+Slim Jims:           |  0.21  |   17   |    3.57    |
+Butterfingers:       |  1.11  |   3   |    3.33    |
+Chex Mix Bars:       |  0.39  |   24   |    9.36    |
+Pilsbury cookies:    |  0.42  |   16   |    6.72    |
+Lays Flavor mix:     |  0.37  |   118   |    43.66    |
+Pistachios:          |  0.7  |   24   |    16.80    |
+Utz Variety Box:     |  0.34  |   21   |    7.14    |
+Sunkist Orange Soda: |  0.5  |   24   |    12.00    |

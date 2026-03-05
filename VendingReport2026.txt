@@ -1,0 +1,44 @@
+Cash Collection 
+Date: 2026-01-01
+Location: LSI
+Gross Profit: 336.0
+Mileage Start - Mileage End: 143021 - 143059
+Trip Mileage: 38
+
+Cash Collection 
+Date: 2026-01-17
+Location: LSI
+Gross Profit: 164.0
+Mileage Start - Mileage End: 143511 - 143549
+Trip Mileage: 38
+
+Cash Collection 
+Date: 2026-02-04
+Location: LSI
+Gross Profit: 232.0
+Mileage Start - Mileage End: 144002 - 144041
+Trip Mileage: 39
+
+Expense 
+Date: 2026-02-03
+Location: Sams
+Expense Cost: 122.66
+Expense Type: Inventory
+Mileage Start - Mileage End: 0 - 0
+Trip Mileage: 0
+
+Expense 
+Date: 2026-02-12
+Location: Sams
+Expense Cost: 176.13
+Expense Type: Inventory
+Mileage Start - Mileage End: 0 - 0
+Trip Mileage: 0
+
+Cash Collection 
+Date: 2026-02-12
+Location: COIN DEPOSIT
+Gross Profit: 112.45
+Mileage Start - Mileage End: 144204 - 144215
+Trip Mileage: 11
+

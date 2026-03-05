@@ -2,14 +2,15 @@ package model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class Year {
 
 	/** Data Members */
 	private int year;
-	private double expense;
-	private double grossProfit;
-	private double netProfit;
+	private BigDecimal expense;
+	private BigDecimal grossProfit;
+	private BigDecimal netProfit;
 	private int mileage;
 
 	// TODO could add these to get specifics at later date.
@@ -23,11 +24,11 @@ public class Year {
 	// private double profitGRS;
 
 	/** Constructor */
-	public Year(int year, double expense, double grossProfit, int mileage) {
+	public Year(int year, BigDecimal expense, BigDecimal grossProfit, int mileage) {
 		this.year = year;
 		this.expense = expense;
 		this.grossProfit = grossProfit;
-		netProfit = Math.round(grossProfit - expense);
+		netProfit = grossProfit.subtract(expense);
 		this.mileage = mileage;
 	}
 
@@ -37,15 +38,15 @@ public class Year {
 		return year;
 	}
 
-	public double getExpense() {
+	public BigDecimal getExpense() {
 		return expense;
 	}
 
-	public double getGrossProfit() {
+	public BigDecimal getGrossProfit() {
 		return grossProfit;
 	}
 
-	public double getNetProfit() {
+	public BigDecimal getNetProfit() {
 		return netProfit;
 	}
 

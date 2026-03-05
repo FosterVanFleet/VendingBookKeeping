@@ -12,6 +12,7 @@ import model.CashCollection;
 import model.Expense;
 import model.Food;
 import model.Month;
+import model.RecordParser;
 import model.Year;
 
 import java.util.Scanner;
@@ -19,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -160,7 +162,7 @@ public class BookKeeping {
 
 		// get gP
 		System.out.println("Gross Profit");
-		double gP = Double.parseDouble(input.nextLine().trim());
+		BigDecimal gP = new BigDecimal(input.nextLine().trim());
 
 		// Confirm the data and confirm the action of entry out.
 		System.out.println("The data you entered is");
@@ -211,7 +213,7 @@ public class BookKeeping {
 
 			// expense cost.
 			System.out.println("Cost of expense? ");
-			double eCost = Double.parseDouble(input.nextLine().trim());
+			BigDecimal eCost = new BigDecimal(input.nextLine().trim());
 
 			// initialize variables.
 			String yesOrNo = "";
@@ -357,107 +359,36 @@ public class BookKeeping {
 			}
 		}
 
-		// Create a file reader.
 		BufferedReader reader = new BufferedReader(new FileReader(fIn));
 
-		// Variable initialization/ declaration.
-		double totalProfit = 0;
-		double totalExpense = 0;
-		int mileage;
+		BigDecimal totalProfit = new BigDecimal("0.00");
+		BigDecimal totalExpense = new BigDecimal("0.00");
 		int totalMileage = 0;
-		String collectOrExpense;
 
-		// Iterate down through the file until end is reached.
-		while ((collectOrExpense = reader.readLine()) != null) {
-			collectOrExpense = collectOrExpense.trim();
+		Object record;
 
-			// Loop through file and add Profits.
-			if (collectOrExpense.equals("Cash Collection")) {
-				String dateLine = reader.readLine();
-				// Null check before trim.
-				if (dateLine != null)
-					dateLine = dateLine.trim();
+		while ((record = RecordParser.parseNextRecord(reader)) != null) {
 
-				// Check if the line is from the correct year and month.
-				if (dateLine.startsWith("Date: " + year + "-" + monthStr)) {
-					// Skip Location line.
-					reader.readLine();
+			if (record instanceof CashCollection collection) {
 
-					// Store the profit line
-					String profitLine = reader.readLine();
-
-					// null check before trim
-					if (profitLine != null) {
-						profitLine = profitLine.trim();
-
-						// Separate the string and profit amount.
-						if (profitLine.startsWith("Gross Profit: ")) {
-							double profit = Double.parseDouble(profitLine.substring("Gross Profit: ".length()));
-							totalProfit += profit;
-						}
-					}
-					// Skip to mileageLine.
-					reader.readLine();
-					// Get the mileage line separate String and mileage, add to total mileage.
-					String mileageLine = reader.readLine();
-					// null check before trim.
-					if (mileageLine != null) {
-						mileageLine = mileageLine.trim();
-						mileage = Integer.parseInt(mileageLine.substring("Trip Mileage: ".length()));
-						totalMileage += mileage;
-					}
-					// else this record is not of the correct month and year.
-				} else {
-					// Skip the rest of record (6 lines).
-					for (int i = 0; i < 6; i++) {
-						reader.readLine();
-					}
-				}
-				// else its an Expense.
-			} else if (collectOrExpense.equals("Expense")) {
-				String dateLine = reader.readLine();
-				if (dateLine.startsWith("Date: " + year + "-" + month)) {
-					// Skip location line.
-					reader.readLine();
-
-					// Store the expense Line.
-					String expenseLine = reader.readLine();
-					// null check before trim.
-					if (expenseLine != null)
-						expenseLine = expenseLine.trim();
-
-					// Separate the string and the cost.
-					if (expenseLine != null && expenseLine.startsWith("Expense Cost: ")) {
-						double expense = Double.parseDouble(expenseLine.substring("Expense Cost: ".length()));
-						// Add the expense to the running total.
-						totalExpense += expense;
-					}
-
-					// Skip to the mileage line.
-					reader.readLine();
-					reader.readLine();
-
-					// Get mileage line separate String and mileage, add to total mileage.
-					String mileageLine = reader.readLine();
-					mileageLine = mileageLine.trim();
-					mileage = Integer.parseInt(mileageLine.substring("Trip Mileage: ".length()));
-					totalMileage += mileage;
-					// else this record is not of the correct month and year.
-				} else {
-					// Skip the rest of the record (7 lines).
-					for (int i = 0; i < 7; i++) {
-						reader.readLine();
-					}
+				if (collection.getDate().startsWith(year + "-" + monthStr)) {
+					totalProfit = totalProfit.add(collection.getProfit());
+					totalMileage += collection.getMileageTotal();
 				}
 
+			} else if (record instanceof Expense expense) {
+
+				if (expense.getDate().startsWith(year + "-" + monthStr)) {
+					totalExpense = totalExpense.add(expense.getExpenseAmount());
+					totalMileage += expense.getMileageTotal();
+				}
 			}
 		}
-		// Create month object, call member function monthOut to print out the totals.
-		Month endOfMonth = new Month(monthStr, year, totalExpense, totalProfit, totalMileage);
-		endOfMonth.monthOut(fOut);
-		// Close the reader.
+
 		reader.close();
 
+		Month endOfMonth = new Month(monthStr, year, totalExpense, totalProfit, totalMileage);
+		endOfMonth.monthOut(fOut);
 	}
 
 	/**
@@ -515,86 +446,40 @@ public class BookKeeping {
 				// else loop again.
 			} else {
 				System.out.println("You selected no. Please input the correct data.");
+			
 			}
 		}
-
-		// Create a file reader.
 		BufferedReader reader = new BufferedReader(new FileReader(fIn));
 
-		// Variable declaration/ initialization.
-		String collectOrExpense;
-		double totalProfit = 0;
-		double totalExpense = 0;
-		int mileage;
+		BigDecimal totalProfit = new BigDecimal("0.00");
+		BigDecimal totalExpense = new BigDecimal("0.00");
 		int totalMileage = 0;
 
-		// Iterate down through the file until end is reached.
-		while ((collectOrExpense = reader.readLine()) != null) {
-			collectOrExpense = collectOrExpense.trim();
-			// Loop through file and add Profits.
-			if (collectOrExpense.equals("Cash Collection")) {
-				String dateLine = reader.readLine();
-				dateLine = dateLine.trim();
+		Object record;
 
-				// Check if entry is of the correct year.
-				if (dateLine.startsWith("Date: " + year)) {
-					// Skip Location line.
-					reader.readLine();
+		while ((record = RecordParser.parseNextRecord(reader)) != null) {
 
-					// Store the profit line.
-					String profitLine = reader.readLine();
-					profitLine = profitLine.trim();
+		    if (record instanceof CashCollection collection) {
 
-					// Separate the string and profit amount.
-					if (profitLine != null && profitLine.startsWith("Gross Profit: ")) {
-						double profit = Double.parseDouble(profitLine.substring("Gross Profit: ".length()));
-						totalProfit += profit;
-					}
-					// Skip to mileageLine.
-					reader.readLine();
+		        if (collection.getDate().startsWith(String.valueOf(year))) {
+		            totalProfit = totalProfit.add(collection.getProfit());
+		            totalMileage += collection.getMileageTotal();
+		        }
 
-					// Get the mileage line separate String and mileage, add to total mileage.
-					String mileageLine = reader.readLine();
-					mileageLine = mileageLine.trim();
-					mileage = Integer.parseInt(mileageLine.substring("Trip Mileage: ".length()));
-					totalMileage += mileage;
-				}
+		    } else if (record instanceof Expense expense) {
 
-				// else its an Expense.
-			} else if (collectOrExpense.equals("Expense")) {
-				// Read date and check if its the write year
-				String dateLine = reader.readLine();
-				dateLine = dateLine.trim();
-				if (dateLine.startsWith("Date: " + year)) {
-					// Skip location line.
-					reader.readLine();
-					// Store the expense Line.
-					String expenseLine = reader.readLine().trim();
-					// Separate the string and the cost.
-					if (expenseLine != null && expenseLine.startsWith("Expense Cost: ")) {
-						double expense = Double.parseDouble(expenseLine.substring("Expense Cost: ".length()));
-						// add the expense.
-						totalExpense += expense;
-					}
-
-					// Skip to the mileage line.
-					reader.readLine();
-					reader.readLine();
-					// Get mileage line separate String and mileage, add to total mileage.
-					String mileageLine = reader.readLine().trim();
-					mileage = Integer.parseInt(mileageLine.substring("Trip Mileage: ".length()));
-					totalMileage += mileage;
-				}
-			}
+		        if (expense.getDate().startsWith(String.valueOf(year))) {
+		            totalExpense = totalExpense.add(expense.getExpenseAmount());
+		            totalMileage += expense.getMileageTotal();
+		        }
+		    }
 		}
 
-		// Create the endOfYear object. call the Member function yearOut.
+		reader.close();
+
 		Year endOfYear = new Year(year, totalExpense, totalProfit, totalMileage);
 		endOfYear.yearOut(fOut);
-
-		// Close the reader.
-		reader.close();
-	}
+}
 
 	public static void foodWaste() throws IOException, ParseException {
 		System.out.println("You selected Food Waste.");
